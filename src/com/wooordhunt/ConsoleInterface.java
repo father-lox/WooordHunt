@@ -15,7 +15,6 @@ public class ConsoleInterface {
     public void startProgram(String[] args) {
         try {
             databaseController.openConnection();
-            useDataBase = true;
         }
         catch (SQLException | ClassNotFoundException exception) {
             printErrorInfo(exception);
@@ -24,18 +23,17 @@ public class ConsoleInterface {
                 isCorrectAnswer = true;
                 System.out.println("Do you wont to continue without data base (yes/no)?");
                 String choice = new Scanner(System.in).nextLine().toLowerCase();
-                switch (choice) {
-                    case ("yes"):
-                        useDataBase = true;
-                        break;
-                    case ("no"):
-                        useDataBase = false;
-                        break;
-                    default:
-                        System.out.println("Answer isn't correct. Try again");
-                        isCorrectAnswer = false;
+                if (choice.equals("yes")) {
+                    useDataBase = false;
                 }
-            } while (isCorrectAnswer);
+                else if (choice.equals("no")) {
+                    closeProgram();
+                }
+                else {
+                    System.out.println("Answer isn't correct. Try again");
+                    isCorrectAnswer = false;
+                }
+            } while (!isCorrectAnswer);
         }
 
 
@@ -166,7 +164,7 @@ public class ConsoleInterface {
         System.out.println("\tdescription:" + exception.getMessage());
     }
 
-    private boolean useDataBase = false;
+    private boolean useDataBase = true;
     private final DatabaseController databaseController = new DatabaseController();
     private final WooordhuntParser WHP = new WooordhuntParser();
 }
