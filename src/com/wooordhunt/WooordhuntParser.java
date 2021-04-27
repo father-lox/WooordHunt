@@ -80,7 +80,9 @@ public class WooordhuntParser {
         ArrayList<Pair<String, String>> PairPhrases = new ArrayList<>();
         for (int i = 0; i < phrases.length; i++) {
             String[] temp = phrases[i].split(" — ");
-            PairPhrases.add(new Pair<>(temp[0], temp[1]));
+            if  (temp.length == 2) {
+                PairPhrases.add(new Pair<>(temp[0], temp[1]));
+            }
         }
         return PairPhrases;
     }

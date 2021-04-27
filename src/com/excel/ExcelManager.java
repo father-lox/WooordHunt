@@ -23,8 +23,8 @@ public class ExcelManager {
         SimpleDateFormat date = new SimpleDateFormat("dd.MM.yyyy");
         String tag = date.format(new Date());
         setTitles(sheet);
-        for (int i = 1; i < words.length; i++) {
-            Row wordRow = sheet.createRow(i);
+        for (int i = 0; i < words.length; i++) {
+            Row wordRow = sheet.createRow(i + 1);
             wordRow.createCell(0).setCellValue("0%");
             wordRow.createCell(1).setCellValue(tag + "; " + setTag(words[i].getRang()));
             wordRow.createCell(2).setCellValue(words[i].getWord());

@@ -58,13 +58,14 @@ public class ConsoleInterface {
         for (String translation : word.getTranlations()) {
             System.out.println('\t' + translation);
         }
-        System.out.println("Словосочетания:");
+
         System.out.println("Примеры:");
         if (word.examplesIsSet()){
             for (Pair<String, String> example : word.getExamples()) {
                 System.out.println('\t' + example.getEngValue() + "\n\t\t" + example.getRuValue());
             }
         }
+        System.out.println("Словосочетания:");
         if (word.phrasesIsSet()) {
             for (Pair<String, String> phrase : word.getPhrases()) {
                 System.out.println('\t' + phrase.getEngValue() + "\n\t\t" + phrase.getRuValue());
